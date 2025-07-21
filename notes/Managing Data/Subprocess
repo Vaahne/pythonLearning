@@ -1,0 +1,41 @@
+subprocess
+===========
+import subprocess
+subprocess.run(["date"])
+
+capture_output = True 
+the otuput will be stored in  avaraible 
+
+result = subprocess.run(["host","8.8.8.8"],capture_output=True)
+print(result.returncode)
+o/p: 0
+
+print(result.stdout)
+o/p: b'0.0.0.0 ln.addr domain name pointer dns.google\n'
+
+this comes in bite formate
+
+print(result.stdout.decode().split())
+o/p: ['8.8.8.8.in.addr','domain','name','pointer','dns.google']
+
+
+STDERR
+-------
+result = subprocess.run(["rm","no_file"],capture_output=True)
+print(result.returncode)
+o/p: 1
+print(result.stderr)
+o/p:cannot remove no_file as it doenstno t 
+
+===advanced subprocess =========
+
+import os
+import subprocess
+
+my_env = os.environ.copy()
+my_env["PATH"] = os.pathsep.join(["/opt/myapp/", my_env["PATH"]])
+
+result = subprocess.run(["myapp"], env=my_env)
+
+here we are copying the environment vaiabes and adding some path to it by using join
+and running using subprocess

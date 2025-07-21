@@ -1,0 +1,24 @@
+echo "starting at $(date)"
+    starting at Sun, Jul 20, 2025  8:14:14 PM
+echo "Finished at $(date)"
+    finished at Sun, Jul 20, 2025  8:15:50 PM
+
+sample.sh
+#!/bin/bash
+
+echo "starting at $(date)"
+echo
+
+echo "UPTIME"
+UPTIME
+echo
+
+echo "FREE"
+free
+echo
+
+echo "WHO"
+who
+echo
+
+echo "Finished at $(date)"  

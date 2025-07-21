@@ -1,0 +1,16 @@
+Test driven development(TDD):
+    calls the test before writing the code.
+
+Life cycle:
+    writing the test first
+    running it , to make it fail
+    once failed , write the code 
+    run the test again
+    if passes, next part , 
+    if fails, debug and fix
+
+Advantages of TDD:
+    Test cases written before writing code.
+    Test while you develop code.
+    A problem is well thought out.
+    

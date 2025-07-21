@@ -1,0 +1,34 @@
+try-except
+----------
+ used to continue the flow of prgram when some part went wrong. 
+
+ try:
+    //some code
+ except:
+    //some code
+
+Raising errors:
+-------------------
+    raise is used to generate a errors.
+    here we are generating ValueError
+
+
+#!/usr/bin/env python3
+
+def validate_user(username, minlen):
+  if minlen < 1:
+    raise ValueError("minlen must be at least 1")
+
+  if len(username) < minlen:
+    return False
+  if not username.isalnum():
+    return False
+  return True
+
+assert type(username) == str, "username must be a string"  
+    assertion will throw an error when username is not string
+
+assert raising 
+----------------------
+   self.assertRaises(ValueError, validate_user, "user", -1)
+   for assertRaises call is different , here we pass the type of error, function and arguments

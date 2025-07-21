@@ -1,0 +1,25 @@
+# file paths in python
+2 types
+absolute file path
+relative file path
+
+window:
+    c:/users/dir/file.txt
+os:
+    /home/dir/file.txt
+
+
+Question 1
+There are two types of file paths: relative and absolute. What is an absolute file path
+    A file path that spells out the exact location of the file.
+
+
+
+os.getcwd()
+-------------
+outputs['files_and_directories'] = os.getcwd()
+
+outputs['path_value']= os.environ.get('PATH')
+
+
+use / for file paths 

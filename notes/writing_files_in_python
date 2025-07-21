@@ -1,0 +1,15 @@
+# writing into files
+with open("spider.txt","w") as file:
+    file.write("Wriitng using python")
+
+# default mode is read r
+# w write mode
+# a append mode
+# r+ read and write mode
+# “r”  open for reading (default)
+# “w”  open for writing, truncating the file first
+# “x”  open for exclusive creation, failing if the file already exists
+# “a”  open for writing, appending to the end of the file if it exists
+# “+”  open for both reading and writing
+
+# Reference document: https://docs.python.org/3/library/functions.html#open

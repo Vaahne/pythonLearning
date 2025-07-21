@@ -1,0 +1,278 @@
+reg ex
+--------
+import re
+Ex: log = "asdf july fasd  2023 [123455] afsddfs"
+    index = log.index('[')
+    print(log[index+1:index+6])
+
+this prints 123455
+Reference: regex101.com
+================================================
+. -> single char                                |
+* -> any no of characters                       |
+[] -> 0 or more char [Pp]ython,"python"         |
+[a-z] -> range of letters from a-z              |
+[A-Z] -> range of letters from A-Z              |
++ -> 1 or more characters any char (p+n)        |
+? -> 0 or 1 occurance (its like optional)       |
+================================================
+
+grep is powerful tool
+grep prints any line that containes the string
+Ex: grep 'thon'
+    marathon
+    fairthon
+    telethon
+
+    grep -i python /usr/share/dict/words
+
+. matches any character
+-------------------------
+grep l.rts /usr/share/dict/words
+    alerts
+    blerts
+
+^ matches starting
+------------------------------
+grep ^fruit /usr/share/dict/words
+fruitName
+fruits
+fruitesdfa
+
+$ for matching the ending
+------------------------------
+grep $fruit /user/share/dist/words
+dragonfruit
+
+==========Examples===========
+import re
+result = re.search(r"aza", "maze")
+print(result)
+print(re.search(r"^x", "xenon"))
+o/p: x
+
+import re
+print(re.search(r"p.ng", "clapping"))
+print(re.search(r"p.ng", "sponge"))
+o/p: ping 
+     pong
+    
+print(re.search(r"p.ng","spong"))
+
+======any char in order a e i in a word========
+import re
+def check_aei (text):
+  result = re.search(r"a.e.i.", text)
+  return result != None
+
+print(check_aei("academia")) # True
+print(check_aei("aerial")) # False
+print(check_aei("paramedic")) # True
+
+====To ignore case =========
+
+result = re.search(r"a.e.i.", text,re.IGNORECASE)
+print(result)
+
+==== wildcard characters =====
+[]
+print(re.search(r"[Pp]ython","python"))
+o/p: python
+
+print(re.search(r"[a-z]way", "The end of the highway"))
+print(re.search(r"[a-z]way", "What a way to go"))
+print(re.search("cloud[a-zA-Z0-9]", "cloudy"))
+print(re.search("cloud[a-zA-Z0-9]", "cloud9"))
+o/p: hway    
+     None
+     cloudy
+     cloud9
+
+import re
+print(re.search(r"[^a-zA-Z]", "This is a sentence with spaces."))
+print(re.search(r"[^a-zA-Z ]", "This is a sentence with spaces."))
+
+print(re.search(r"cat|dog", "I like cats."))
+print(re.search(r"cat|dog", "I love dogs!"))
+print(re.search(r"cat|dog", "I like both dogs and cats."))
+
+print(re.search(r"cat|dog", "I like cats."))
+print(re.search(r"cat|dog", "I love dogs!"))
+print(re.search(r"cat|dog", "I like both dogs and cats."))
+print(re.findall(r"cat|dog", "I like both dogs and cats."))
+
+o/p:
+<_sre.SRE_Match object; span=(4, 5), match=' '>
+<_sre.SRE_Match object; span=(30, 31), match='.'>
+<_sre.SRE_Match object; span=(7, 10), match='cat'>
+<_sre.SRE_Match object; span=(7, 10), match='dog'>
+<_sre.SRE_Match object; span=(12, 15), match='dog'>
+<_sre.SRE_Match object; span=(7, 10), match='cat'>
+<_sre.SRE_Match object; span=(7, 10), match='dog'>
+<_sre.SRE_Match object; span=(12, 15), match='dog'>
+['dog', 'cat']
+
+
+any chars [!,:;,@]way
+
+--- using pipe symbol | -----
+print(re.search(r"cat|dog","I like cat"))
+o/p: cat
+
+---
+import re
+print(re.search(r"Py.*n", "Pygmalion"))
+print(re.search(r"Py.*n", "Python Programming"))
+print(re.search(r"Py[a-z]*n", "Python Programming"))
+print(re.search(r"Py[a-z]*n", "Pyn"))
+o/p:
+<_sre.SRE_Match object; span=(0, 9), match='Pygmalion'>
+<_sre.SRE_Match object; span=(0, 17), match='Python Programmin'>
+<_sre.SRE_Match object; span=(0, 6), match='Python'>
+<_sre.SRE_Match object; span=(0, 3), match='Pyn'>
+
+------
+import re
+print(re.search(r"o+l+", "goldfish"))
+print(re.search(r"o+l+", "woolly"))
+print(re.search(r"o+l+", "boil"))
+o/p:
+<_sre.SRE_Match object; span=(1, 3), match='ol'>
+<_sre.SRE_Match object; span=(1, 5), match='ooll'>
+None
+
+-----
+import re
+print(re.search(r"p?each", "To each their own"))
+print(re.search(r"p?each", "I like peaches"))
+o/p:
+<_sre.SRE_Match object; span=(3, 7), match='each'>
+<_sre.SRE_Match object; span=(7, 12), match='peach'>
+
+
+---- 2 a or A s 
+import re
+def repeating_letter_a(text):
+  result = re.search(r"(.*[aA].*){2}", text,re.IGNORECASE)
+  return result != None
+
+print(repeating_letter_a("banana")) # True
+print(repeating_letter_a("pineapple")) # False
+print(repeating_letter_a("Animal Kingdom")) # True
+print(repeating_letter_a("A is for apple")) # True
+
+
+============ Escape characters ============
+\w -> matches letters ,numbers and underscores
+\d -> digits
+\s -> space
+
+import re
+print(re.search(r".com", "welcome"))
+print(re.search(r"\.com", "welcome"))
+print(re.search(r"\.com", "mydomain.com"))
+o/p:
+<_sre.SRE_Match object; span=(2, 6), match='lcom'>
+None
+<_sre.SRE_Match object; span=(8, 12), match='.com'>
+
+
+print(re.search(r"\w*","This is a sentence"))
+<_sre.SRE_Match object; span=(0, 4), match='This'>
+
+== Begin and end with A
+re.search(r"^A.*a$","Austrail")
+o/p: None
+
+--- regex for phone num ---
+r"\d{3}-\d{3}-\d{4}"
+
+===for 0-12 time formate===
+import re
+def check_time(text):
+  # pattern = r"^\d{1,2}:\d{1,2}\s?(am|pm|AM|PM)$"
+  pattern =  r"^(1[0-2]|0?[1-9]):([0-5][0-9])\s?(am|pm|AM|PM)$"
+  result = re.search(pattern, text)
+  return result != None
+
+print(check_time("12:45pm")) # True
+print(check_time("9:59 AM")) # True
+print(check_time("6:60am")) # False
+print(check_time("five o'clock")) # False
+print(check_time("6:02 am")) # True
+print(check_time("6:02km")) # False
+
+=============capturing regex groups ==============
+patterns enclosed in parenthesis
+group of letters , (comma) next group of letters
+
+groups 
+----------
+    0th element is at 0  is whole string
+    1st element is the first index element
+
+
+import re
+result = re.search(r"^(\w*), (\w*)$", "Lovelace, Ada")
+print(result)
+print(result.groups())
+print(result[0])
+print(result[1])
+print(result[2])
+"{} {}".format(result[2], result[1])
+
+o/p:
+    <_sre.SRE_Match object; span=(0, 13), match='Lovelace, Ada'>
+    ('Lovelace', 'Ada')
+    Lovelace, Ada
+    Lovelace
+    Ada
+    Ada Lovelace
+============finding all matching====
+import re
+print(re.search(r"[a-zA-Z]{5}","a truth is always the truth"))
+o/p: truth
+
+to find all
+print(re.findall(r"[a-zA-Z]{5}","a truth is always the truths"))
+o/p: ['truth' 'alway' 'truth']
+
+to find all exact count of letters
+print(re.search(r"\b[a-zA-Z]{5}\b","a truth is always the truth"))
+o/p: ['truth']
+
+print(re.findall(r"\w{5,10}", "I really like strawberries"))
+o/p: ['really','strawberri']
+
+print(re.findall(r"\w{5,}", "I really like strawberries"))
+o/p: ['really','strawberries']
+
+print(re.search(r"s\w{,20}", "I really like strawberries"))
+o/p: strawberries
+
+===========extracting the id ==========
+log = "July 31 07:51:48 mycomputer bad_process[12345]: ERROR Performing package upgrade"
+regex = r"\[(\d+)\]"
+result = re.search(regex, log)
+print(result[1])
+o/p: 12345
+
+log ="July 31 07:51:48 mycomputer bad_process[12345]: ERROR Performing package upgrade"
+def extract_pid(log_line):
+    regex = r"\[(\d+)\]"
+    result = re.search(regex, log_line)
+    if result is None:
+        return ""
+    return result[1]
+print(extract_pid(log))
+print(extract_pid("99 elephants in a [cage]"))
+o/p: 12345
+
+===========split==================
+split with reg ex
+re.split(r"[.?!]","One senetnece. Another one? And last!")
+o/p: "One senetnece","Another pne","And last"
+
+==== sub===
+re.sub(r"[\w.%+-]+@[\w.-]+","[Rea]","Received a email for tet@gmail.com")
+o/p: Received an email for [Rea]

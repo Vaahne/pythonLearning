@@ -1,0 +1,36 @@
+files in python
+===================
+# opening a file
+file = open("spider.txt")
+
+# read line by line and need to close manually using file.close()
+file.readline() # first line
+file.readline() # second line
+file.close()
+
+# read whole file using readline and to do automatic file.close by python
+with open("spider.txt") as file:
+    print(file.readline())
+
+#read the file using read
+file.read()
+file.close()
+
+# line by line
+for line in file:
+    print(line.upper()) # to upper case
+# this adds a new line \n after each and every line 
+
+# to remove the new line \n after every line
+for line in file:
+    print(line.strip().upper())
+
+# we can store in list
+file = open("spider.txt")
+lines = file.readlines()
+file.close()
+lines.sort()
+print(lines)    # print in all the lines in ["..","..."] format
+
+\n-> new line
+\t-> tab space

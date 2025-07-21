@@ -1,0 +1,80 @@
+Signaling:
+    Tokens delivered to running processes to indicate a desired action.
+Ex:
+>>ping www.exampe.com
+it sends ICMP packets
+Ctrl + C to stop
+
+>>ping www.google.com
+>>fg
+
+SIGINT: Signal interrupt (Ctrl +c or Ctrl+z)
+SIGSTOP: Signal that we sent is called SIGSTOP
+
+fg: command that makes our program runs once more
+kill: it will send a signal SIGTERM that tells the program to terminate.
+    we need to know the process id (PID)
+    we need to execute kill in a separate terminal
+ps: to get the process
+ps ax: list of all running processes in the current computer
+
+lets run ping www.example.com
+to know by name (ex:ping) in another terminal
+>> ps ax | grep ping 
+    we will get the pid and the details (ex 4619)
+now lets kill that
+>>kill 4619
+
+chmod / chown / chgrp used to make file readable to everyone on the system before moving to public dir.
+
+chmod +r file.html && mv file.html /var/www/html/index.html
+
+content of file
+===================
+cut is a command that extracts feilds from a data file.
+Ex:
+    cut -f1 -d"," address.csv   (this extracts first feild from csv)
+
+    cut -c1-3,5-7,9-12 phone.txt (extracts the digits from the text file)
+
+Additional commands
+====================
+>>id
+    info about the current user.
+    like group id ,uid
+>>free
+    info about memonry of current system
+>> free -h
+    info in human readable format instead of bytes
+
+Pipes and Signaling  commands
+===============================
+command > file 
+    redirects standard output ,overwrites file
+command >> file
+    appends to file
+command < file
+    redirects standard input, from file
+commands 2> file
+    redirects the standard error into file
+command1 | command2
+    connects the output of command1 to the input of command2
+
+operating with processes:
+==========================
+ps
+    List the processes executing in the current terminal
+ps ax
+    lists the current running processes in the current system
+ps e
+    shows the environment for process listed
+kill PID
+    sends the SIGTERM signal to process identified by PID
+fg
+    causes a job that was stopped or in the background to return to foreground
+bg
+    causes a job that was stopped to go to background
+jobs
+    lists the job currently running or stopped
+top
+    shows the processes currently using the most CPU time(press q to quit)

@@ -1,0 +1,50 @@
+echo : to print
+ls : show the files and directories (ls -l ) -> show all files with details (ls -a) => hidden files
+cat : to view content of a file
+mkdir: make directory
+cd: change directory
+touch: make a file
+cp: copy files
+rm : remove file (rm *) -> remove all files
+mv : move files or rename
+rmdir: remove directory
+
+============== Redirecting Stream ========================
+ >(greater than symbol)
+Ex: cat test.py
+print("Hello ! how are you")
+>> python3 test.py
+Hello ! how are you
+
+>> python3 test.py > new_file.txt
+>> cat new_file.txt
+Hello ! how are you
+
+
+append the output of a command to a .txt file
+----------------------------------------------
+>> (double greater than symbol)
+
+>> python3 test.py >> new_file.txt
+>> cat new_file.txt
+Hello ! how are you
+Hello ! how are you
+
+to send input as a file (< less than symbol)
+---------------------------
+< (less than symbol) is used to pass file as a input
+
+python3 file.py < input
+
+<filename1 2> file_name2
+-------------------------------
+python3 execute_file.py < file1 2> file_name2
+    here we are executing execute_file.py which receives the input from file1
+    and the if any errors it will be saved in file_name2
+
+python3 file1.py <stdinput >file3 2>err_file
+---------------------------------------------------
+python3 file1.py: Runs the Python script file1.py.
+<stdinput: Redirects standard input from the file named stdinput.
+>file3: Redirects standard output (everything from print() or sys.stdout.write()) into file3.
+2>err_file: Redirects standard error (e.g., uncaught exceptions or sys.stderr.write()) into err_file.

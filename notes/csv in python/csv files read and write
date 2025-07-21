@@ -1,0 +1,48 @@
+============Reading csv file ============
+import csv
+file = open("file.txt")
+csv_f = csv.reader(file)
+for row in csv_f:
+    name, phone = row
+    print("Name: {}, Phone: {}".format(name,phone))
+file.close()
+
+# ==========writing=========
+
+need to import csv
+have data to be written into csv (name as data)
+with open file_name.csv  as var:
+    writer = csv.writer(var)
+    writer.writerows(data)
+
+here we can use 
+writerows : for writing multiple rows into csv file
+writerow  : for writing single row into csv file
+
+==========with dictionary ============
+import csv
+users = [{"name":"Pavan","phone":"7232323232","department":"testing"},
+        {"name":"Vani","phone":"79192092","department":"Development"},
+        {"name":"Munidhaar","phone":"723232","department":"Prod"},
+        {"name":"Devansh","phone":"93324232","department":"Prod"}]
+
+keys = ["name","phone","department"]
+
+with open("dictionary_csv.csv","w") as dict:
+    writer = csv.DictWriter(dict,fieldnames=keys)
+    writer.writeheader()
+    writer.writerows(users)
+
+here the first line of csv will be the keys (name,phone ,department)
+next rows will be the data
+
+---------read dict file----------
+with open("asdf") as f:
+    reader = csv.DictReader(f)
+
+------skip the first row---------
+next(rows)
+
+Resources: 
+https://docs.python.org/3/library/csv.html
+https://realpython.com/python-csv/

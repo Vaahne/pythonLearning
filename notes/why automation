@@ -1,0 +1,17 @@
+To reduce manual effort
+makes life easier
+
+pitfalls
+--------
+Time and effort to write scripts
+
+Pareto principle   (20% of sys administration tasks that you perform are responsible for 80% of your work)
+
+disk usage:
+    import shutil
+    du = shutil.disk_usage("/")
+    print(du.free/du.total*100) # shows available free space
+
+cpu usage:
+    import psutil
+    psutil.cpu_percent(0.1)

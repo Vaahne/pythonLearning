@@ -1,0 +1,45 @@
+example=hello
+echo $example
+hello
+
+    assign the variable with = sign  (no space between = sign Ex: examnple=hello)
+    use the variable using $
+
+=== vars.sh====
+#!/bin/bash
+
+line="-------------------------------------------------"
+
+echo "Starting at: $(date)"; echo $line
+
+echo "UPTIME"; uptime; echo $line
+
+echo "FREE"; free; echo $line
+
+echo "WHO"; who; echo $line
+
+echo "Finishing at: $(date)"
+
+=====
+>> ./vars.sh
+
+globs
+==========
+* and ? are most commonly used globs
+* -> any no of characters
+? -> exactly 1 character
+[]-> any chars in between []
+
+
+echo *.py
+    prints all the .py files in the directory
+echo c*.py
+    prints all the .py files starting with c
+echo [cC]*.py
+    prints all the .py files starting with c or C
+echo *
+    prints everyt file
+echo ???????.py
+    prints 7 letter .py file names
+
+

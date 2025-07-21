@@ -1,0 +1,22 @@
+Pipes (|):
+----------
+    using pipes we can connect multiple scripts , commands or other programs together into data processing piplelines.
+
+    It is used to connect the output of one program to the input of another in order pass data between programs.
+
+
+cat spider.txt | tr ' ' '\n' | sort | uniq -c | sort -nr | head
+
+Explination:
+    cat spider.txt  
+        displays the content
+    tr ' ' '\n'
+        translates the space into new line (means each word in a new line)
+    sort    
+        sorts the words
+    uniq -c
+        counts the occurance of each unique word
+    sort -nr
+        sorts in reverse numeric order means most frequent word comes fromtimestamp
+    head
+        displays top 10

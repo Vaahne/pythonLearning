@@ -1,0 +1,28 @@
+if <condition>; then 
+    <statmentes>
+else
+    <statements s...>
+fi
+
+=== conditional.sh===========
+#!/bin/bash
+
+if grep "127\.1\.1\.0" /etc/hosts; then
+    echo "Everything ok"
+else
+    echo "ERROR!127.0.0.1 is not in /etc/hosts"
+fi
+
+==== test ====
+>> if test -n "$PATH"; then echo "Your path is not empty"; fi
+Your path is empty
+
+>> if [ -n "$PATH" ]; then echo "Your path is not empty"; fi
+Your path is not empty
+    should have space around [ ]
+    
+Resources
+----------------
+https://ryanstutorials.net/bash-scripting-tutorial/
+https://linuxconfig.org/bash-scripting-tutorial-for-beginners
+https://www.shellscript.sh

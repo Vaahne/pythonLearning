@@ -1,0 +1,38 @@
+to acept data from user
+input("whats your namne") - accepts string
+int(input("Enter your age")) - accepts numbers
+
+---------I/O stream--------
+STDIN - input
+STDOUT - output
+STDERR - error
+
+---- environment variables ----
+bash is linux shell
+os.environ.get("Var","") -> check the value of var in env if not found return "" (which is set as default here)
+
+env 
+    This gives all the environment variables
+
+>>echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+>> cat variables.py
+
+#!/usr/bin/env python3
+import os
+print("HOME: " + os.environ.get("HOME", ""))
+print("SHELL: " + os.environ.get("SHELL", ""))
+print("FRUIT: " + os.environ.get("FRUIT", ""))
+>>./variables.py 
+HOME: /home/user
+SHELL: /bin/bash
+FRUIT:
+    Her value of Fruit is not set so it is empty. Now lets set it using export
+ 
+>>export FRUIT=Pineapple
+>>./variables.py 
+HOME: /home/user
+SHELL: /bin/bash
+FRUIT: Pineapple
+

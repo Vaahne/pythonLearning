@@ -1,0 +1,59 @@
+What is testing?
+    process of evaluating computere code .
+
+Manual testing:
+    executing different commands to check the vaues of some code is one type of manual testing
+
+Automation testing:
+    automate process to check if automated value is = to expected value
+
+Test case:
+    Individual unit of testing that looks for a specific response to set of inputs.
+    testing specific functionality with different values
+
+Unit test:
+    These run on individual component or by isolating code to ensure correctness.
+    By running unit tests, developers can identify and fix bugs that appear
+
+=========================  pytest ==============
+    Its a powerful python tool that assists programmers to write more effectively and stable programs.
+    It is used to write variety of tests including integration , end-to-end and functional tests.
+
+    How it is written?
+        It is written in the form of assertion assert()
+
+    Example:
+            def divide(a, b):
+	            assert b != 0, "Cannot divide by zero"
+	            return a / b
+
+=========== unit test and pytest ====================
+ assertEqual() => to check the expected value   Ex: method checks that a == b
+ assertNotEqual() => to check a != b
+ assertTrue() and assertFalse() => To verify a condition    
+ assertRaises() => to verify specific exception gets raised
+
+
+assertEqual(a,b) => checks a == b
+assertNotEqual(a,b)    => checks a!=b
+assertTrue(x)    => checks bool(x) is True
+assertFalse(x)   => checks bool(x) is False
+assertIs(a,b)    => checks that a is b
+assertIsNot(a,b) => checks that a is not b
+assertIsNone(x)  => checks x is None
+assertIsNotNone(x)=> checks x is not None
+assertIn(a,b)    => checks a in b
+assertNotIn(a,b) => checks a not in b
+assertIsInstance(a,b) => checks isInstance(a,b)
+assertNotIsInstance(a,b) => checks not isInstance(a,b)
+assertRaises() => allows developers to check which specific expection is raised
+
+================= CLI =========================
+to call an entire module
+    python -m unittest test-module1 test_module2
+to call a test class
+    python -m unittest test_module1.TestClass
+to call test method
+    python -m unittest test_module1.TestClass.test_method
+to call using file path
+    python -m unittest test/test_something.py

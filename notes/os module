@@ -1,0 +1,18 @@
+we need to import os
+import os
+
+os.remove("file.txt")
+
+to  check if the file exists
+os.path.exists("file.txt") -> true if exists else false
+
+to get the size
+os.path.getsize("file.txt")
+
+-------date and time------
+import datetime
+timestamp = os.path.getmtime("file.txt")
+print(datetime.datetime.fromtimestamp(timestamp))
+
+--absolute path---
+os.path.abspath("file.txt")

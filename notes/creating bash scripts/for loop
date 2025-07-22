@@ -1,0 +1,30 @@
+Example:
+
+the names to iterate are placed separated by space
+----------for.sh-----------
+#!/bin/bash
+for fruit in peach orange pear; do
+    echo "I like $fruit"
+done
+
+Example2:
+we are renaming the files with .HTM to .html extension
+basename is used to return only the filename without extension
+    >> basename index.HTM .HTM
+    index
+--------------------------filename_and_extension.sh-------------
+#!/bin/bash
+
+for file in *.HTM; do
+        name=$(basename "$file" .HTM)
+        mv "$file" "$name.html" 
+done 
+
+
+----------file moved prints.sh------------------
+#!/bin/bash
+
+for file in *.HTM; do
+        name=$(basename "$file" .HTM)
+        echo mv "$file" "$name.html" 
+done

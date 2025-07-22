@@ -1,0 +1,96 @@
+cat -> to view the contents of a file
+    cat file_name
+grep -> to search for specific name or text in a folder or a file
+    grep [pattern] [file_location or directory]
+cut -> re find specific feild by using a delimeter
+    cut [options] [file]
+    syntax: cut -d' ' -f[feild_number]
+
+Linux Redirection
+---------------------
+    > (redirecting to a file ) like saving an outpiut to a file 
+        cat >file_name (over writes the content)
+    >> (appending content to a file)
+        cat >>file_nane( appends the content)
+
+test command
+------------------
+    syntax: 
+        test EXPRESSION
+    Ex:
+        if test -e ~/data/jane_profile_07272018.doc; then echo "File exists"; else echo "File doesn't exist"; fi
+    o/p: File exists
+
+>file_name  
+    to empty the file contents
+
+Iteration
+==============
+    for i in 1 2 3; do
+        echo $i;
+    done
+
+
+findJane.sh
+----------------
+#!/bin/bash
+> oldFiles.txt
+files=$(grep " jane " ../data/list.txt | cut -d ' ' -f 3);
+for file in $files; do
+    if test -e "..${file}"; then echo "..${file}" >> oldFiles.txt; fi
+done
+
+Execution:
+chmod +x findJane.sh
+./findJane.sh
+the output will be in oldFiles.txt
+
+changeJane.py
+================
+#!/usr/bin/env python3
+import sys
+import subprocess
+with open(sys.argv[1]) as file:
+    lines = file.readlines()
+    for line in lines:
+        oldvalue = line.strip()
+        newvalue = oldvalue.replace("jane", "jdoe")
+        subprocess.run(["mv", oldvalue, newvalue])
+file.close()
+
+
+Execution:
+chmod +x changeJane.py
+./changeJane.py oldFiles.txt
+
+
+regex:
+----------
+import re
+
+with open("data/phones.csv", "r") as phones:
+
+ for phone in phones:
+
+   new_phone = re.sub(r"^\D*(\d{3})\D*(\d{3})\D*(\d{4})$", r"(\1) \2-\3", phone)
+
+   print(new_phone)
+
+o/p:
+(123) 456-7890
+(123) 456-7890
+(123) 456-7890
+
+========================================
+^\D*
+    This part of the code matches zero or more non-digit characters at the beginning of the string.
+(\d{3})
+    This part of the code captures exactly three digits, which represent the area code.
+\D*
+    This part of the code matches zero or more non-digit characters between the area code and exchange.
+(\d{3} ) 
+    This part of the code captures the three-digit exchange.
+\D*       
+    This part of the code matches zero or more non-digit characters between the exchange and line.
+(\d{4})$
+    This part of the code captures exactly four digits at the end of the string.

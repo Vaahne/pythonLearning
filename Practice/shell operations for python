@@ -1,0 +1,10 @@
+>>fruit ={"apple":3,"oranges":2,"pear":5}
+>>sorted(fruit)
+    apple,orange,pear
+>>sorted(fruit.item())
+    {("apple":3),("oranges":2),("pear":5)}
+>> import operator
+>>sorted(fruit.items(),key=operator.itemgetter(0))
+    {("apple":3),("oranges":2),("pear":5)}
+>>sorted(fruit.items(),key=operator.itemgetter(1))
+    {("pear":5),("oranges":2),("apple":3)}    
